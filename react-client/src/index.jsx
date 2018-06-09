@@ -1,36 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
-import List from './components/List.jsx';
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import TagFormContainer from "./containers/TagFormContainer.jsx";
+import TagResultsContainer from "./containers/TagResultsContainer.jsx";
+import TextFormContainer from "./containers/TextFormContainer.jsx";
+import TextResultsContainer from "./containers/TextResultsContainer.jsx";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      items: []
-    }
-  }
+import webCrawler from './reducers/index.jsx';
 
-  componentDidMount() {
-    $.ajax({
-      url: '/items', 
-      success: (data) => {
-        this.setState({
-          items: data
-        })
-      },
-      error: (err) => {
-        console.log('err', err);
-      }
-    });
-  }
+const store = createStore(webCrawler);
 
-  render () {
-    return (<div>
-      <h1>Item List</h1>
-      <List items={this.state.items}/>
-    </div>)
-  }
+const App = (props) => {
+  return (
+    <Provider store={store}>
+      <div>
+        <TagFormContainer />
+        <TagResultsContainer />
+        <TextFormContainer />
+        <TextResultsContainer />
+      </div>
+    </Provider> 
+  )
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
