@@ -2,13 +2,14 @@
 // stores result in redux
 
 import React from 'react';
+import axios from 'axios';
 
 class TextForm extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      url: '',
-      text: ''
+      url: 'www.cobalt.io',
+      text: 'Customer First'
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -28,8 +29,8 @@ class TextForm extends React.Component{
         url: this.state.url,
         text: this.state.text,
       }
-    }).then((responce) => {
-      console.log(responce);
+    }).then((response) => {
+      console.log(response);
     })
   }
 
@@ -44,4 +45,4 @@ class TextForm extends React.Component{
   }
 };
 
-export default TextForm
+export default TextForm;

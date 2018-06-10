@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import TextForm from "../components/TagForm.jsx";
+import TextForm from "../components/TextForm.jsx";
 
 const TextFormContainer = props => <TextForm {...props} />;
 
