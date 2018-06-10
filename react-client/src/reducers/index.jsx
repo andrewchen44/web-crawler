@@ -6,12 +6,14 @@ const defaultCrawlResults = {
 const crawlResults = (state = defaultCrawlResults, action) => {
   switch (action.type) {
     case "SET_TAG_MATCHES":
-      let newMatches = { matchTag: action.matches }
-      return newMatches;
+      return Object.assign({}, state, {
+        matchTag: action.matches,
+      });
       break;
     case "SET_TEXT_FOUND":
-      let newFound = { containsText: action.found }
-      return newFound;
+      return Object.assign({}, state, {
+        containsText: action.found,
+      });
       break;
     default:
       return state;

@@ -1,6 +1,3 @@
-// takes in the website and tex thtat you are loking for
-// stores result in redux
-
 import React from 'react';
 import axios from 'axios';
 import * as types from '../actions/crawlActions'
