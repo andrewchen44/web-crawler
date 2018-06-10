@@ -3,7 +3,12 @@
 import React from "react";
 
 const TagResults = props => {
-  return <div>Tag Results here</div>;
+  let matches = props.matchTag;
+  if(matches !== undefined && matches.length === 0) {
+    return null;
+  } else {
+    return <div>matches</div>;
+    }
 };
 
 export default TagResults;

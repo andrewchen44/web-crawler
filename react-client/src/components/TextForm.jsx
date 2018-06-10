@@ -3,6 +3,7 @@
 
 import React from 'react';
 import axios from 'axios';
+import * as types from '../actions/crawlActions'
 
 class TextForm extends React.Component{
   constructor(props){
@@ -30,7 +31,7 @@ class TextForm extends React.Component{
         text: this.state.text,
       }
     }).then((response) => {
-      console.log(response);
+      this.props.dispatch(types.setTextFound(response.data.exists))
     })
   }
 

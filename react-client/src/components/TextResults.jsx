@@ -4,7 +4,12 @@
 import React from "react";
 
 const TextResults = props => {
-  return <div>Text Results here</div>;
+  const contains = props.containsText;
+  if(contains === null) {
+    return null;
+  } else {
+    return <div>Contains text: {contains + ''}</div>;
+  }
 };
 
 export default TextResults;

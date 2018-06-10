@@ -4,6 +4,7 @@
 
 import React from 'react';
 import axios from 'axios';
+import * as types from '../actions/crawlActions'
 
 class TagForm extends React.Component{
   constructor(props){
@@ -30,8 +31,8 @@ class TagForm extends React.Component{
         url: this.state.url,
         tag: this.state.tag,
       }
-    }).then((responce) => {
-      console.log(responce);
+    }).then((response) => {
+      this.props.dispatch(types.setTagMatches(response.data))
     })
   }
 
