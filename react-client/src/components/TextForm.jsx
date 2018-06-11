@@ -6,8 +6,8 @@ class TextForm extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      url: 'www.cobalt.io',
-      text: 'Customer First'
+      url: '',
+      text: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -15,7 +15,7 @@ class TextForm extends React.Component{
 
   handleChange(e){
     const prop = e.target.name;
-    const val = e.target.val;
+    const val = e.target.value;
     this.setState({
       [prop]: val,
     })
@@ -34,10 +34,25 @@ class TextForm extends React.Component{
 
   render() {
     return (
-      <div>
-        website: <input type='text' name='website' value={this.state.website} onChange={this.handleChange}/>
-        text: <input type='test' name='text' value={this.state.text} onChange={this.handleChange}/>
-        <button onClick={this.handleClick}>Submit</button>
+    <div className='section-container border-black'>
+        <div className='display-flex line'>
+          <div className='form-description'>
+            Paste Desired Website URL:
+          </div>
+          <input type='text' name='url' value={this.state.url} onChange={this.handleChange}
+          placeholder='https://cobalt.io/'/>
+        </div>
+        <div className='display-flex line'>
+          <div className='form-description'>
+            Desired Text to be Searched:
+          </div>
+          <input type='text' name='text' value={this.state.text} 
+          placeholder='Resources' 
+          onChange={this.handleChange}/>
+        </div> 
+        <div className='center'>
+         <button className='submit-button' onClick={this.handleClick}>Submit</button>
+        </div>
       </div>
     )
   }

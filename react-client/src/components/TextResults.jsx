@@ -2,11 +2,14 @@ import React from "react";
 
 const TextResults = props => {
   const contains = props.containsText;
-  if(contains === null || contains === undefined) {
-    return null;
-  } else {
-    return <div>Contains text: {contains + ''}</div>;
-  }
+  let exists = '';
+  if(contains !== null && contains !== undefined) {
+    exists = contains ? 'Yes' : 'No';
+  } 
+  
+  return <div className='section-container border-black'>
+    <div>Does website contain searched text: {exists}</div>
+    </div>;
 };
 
 export default TextResults;

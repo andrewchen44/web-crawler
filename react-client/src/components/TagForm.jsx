@@ -6,8 +6,8 @@ class TagForm extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      url: 'https://cobalt.io/',
-      tag: 'h1'
+      url: '',
+      tag: ''
     }
       this.handleChange = this.handleChange.bind(this);
       this.handleClick = this.handleClick.bind(this);
@@ -15,7 +15,7 @@ class TagForm extends React.Component{
 
   handleChange(e){
     const prop = e.target.name;
-    const val = e.target.val;
+    const val = e.target.value;
     this.setState({
       [prop]: val,
     })
@@ -34,10 +34,22 @@ class TagForm extends React.Component{
 
   render() {
     return (
-      <div>
-        website: <input type='text' name='website' value={this.state.website} onChange={this.handleChange}/>
-        tag: <input type='test' name='tag' value={this.state.tag} onChange={this.handleChange}/>
-        <button onClick={this.handleClick}>Submit</button>
+      <div className='section-container border-black'>
+        <div className='display-flex line'>
+          <div className='form-description'>
+            Paste Desired Website URL:
+          </div>
+            <input type='text' name='website' value={this.state.url} placeholder='https://cobalt.io/' onChange={this.handleChange}/>
+        </div>
+        <div className='display-flex line'>
+          <div className='form-description'>
+            Desired Tag to be Searched:
+          </div>
+            <input type='text' name='tag' value={this.state.tag} placeholder='h1'onChange={this.handleChange}/>
+        </div>
+        <div className='center line'>
+          <button className='submit-button' onClick={this.handleClick}>Submit</button>
+        </div>
       </div>
     )
   }
