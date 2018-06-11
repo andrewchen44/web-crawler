@@ -49,7 +49,7 @@ class TextForm extends React.Component{
             Desired Tag to be Searched:
           </div>
           <input type='text' name='tag' value={this.state.tag} onChange={this.handleChange}
-          placeholder='1'/>
+          placeholder='h1'/>
         </div>
         <div className='display-flex line'>
           <div className='form-description'>
