@@ -7,48 +7,54 @@ const app = express();
 
 app.use(express.static(__dirname + '/../react-client/dist'));
 
-app.get('/tag', (req, res) => {
-  let url = req.query.url;
-  const firstThree = url.slice(0,3);
+app.get('/parse', (req, res) => {
+  let endpoint = req.query.endpoint;
+  const firstThree = endpoint.slice(0,3);
+  // add the hppts part in front of endpoint if they only put www.
   if(firstThree === 'www') {
-    url = 'https://' + url;
+    endpoint = 'https://' + endpoint;
   }
   const tag = req.query.tag;
   let results = [];
 
-  request(url, (err, response, html) => {
+  request(endpoint, (err, response, html) => { // make a request to the enpoint
     if(err){
-      res.send(err);
+      res.send(err); // send back the errors if any
     } else {
       const $ = cheerio.load(html);
-      let filtered = $(tag).each(function(i, elem){
+      let filtered = $(tag).each(function(i, elem){ // select all elements with the searched tag and add the text and html to our results
         results[i] = {
           innerText: $(this).text(),
           innerHtml: $(this).html(),
         }
       })
-      res.send(results);
+      res.send(results); // send back the results
     }
   })
 });
 
-app.get('/text', (req, res) => {
-  let url = req.query.url;
-  const firstThree = url.slice(0,3);
-  if(firstThree === 'www') {
-    url = 'https://' + url;
+app.get('/contains', (req, res) => {
+  let endpoint = req.query.endpoint;
+  const firstThree = endpoint.slice(0,3);
+  if(firstThree === 'www') {   // add the hppts part in front of endpoint if they only put www.
+    endpoint = 'https://' + endpoint;
   }
+  const tag = req.query.tag
   const text = req.query.text;
-  request(url, (err, response, html) => {
+  request(endpoint, (err, response, html) => { // make a request to the endpoint
     if(err) {
-      res.send(err);
+      res.send(err); // send backl errors if any
     } else {
-      const $ = cheerio.load(html);
-      let page = $('html').html();
       let results = {
-        exists: page.indexOf(text) !== -1,
+        exists: false,
       }
-      res.send(results)
+      const $ = cheerio.load(html);
+      let matches = $(tag).each(function(i, elem){ // check to see if any elements with the searched for tag has the search for text
+        if($(elem).text().indexOf(text) !== -1) {
+          results.exists = true; // set exists to true if it is
+        }
+      })
+      res.send(results); // send back the results 
     }
   })
 });

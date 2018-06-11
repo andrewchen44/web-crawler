@@ -6,7 +6,7 @@ class TagForm extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      url: '',
+      endpoint: '',
       tag: ''
     }
       this.handleChange = this.handleChange.bind(this);
@@ -22,9 +22,9 @@ class TagForm extends React.Component{
   }
 
   handleClick(){
-    axios.get('/tag', {
+    axios.get('/parse', {
       params: {
-        url: this.state.url,
+        endpoint: this.state.endpoint,
         tag: this.state.tag,
       }
     }).then((response) => {
@@ -37,9 +37,9 @@ class TagForm extends React.Component{
       <div className='section-container border-black'>
         <div className='display-flex line'>
           <div className='form-description'>
-            Paste Desired Website URL:
+            Paste Desired Website endpoint:
           </div>
-            <input type='text' name='website' value={this.state.url} placeholder='https://cobalt.io/' onChange={this.handleChange}/>
+            <input type='text' name='endpoint' value={this.state.endpoint} placeholder='https://cobalt.io/'  onChange={this.handleChange}/>
         </div>
         <div className='display-flex line'>
           <div className='form-description'>

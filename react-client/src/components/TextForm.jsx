@@ -6,7 +6,8 @@ class TextForm extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      url: '',
+      enpoint: '',
+      tag: '',
       text: ''
     }
     this.handleChange = this.handleChange.bind(this);
@@ -22,9 +23,10 @@ class TextForm extends React.Component{
   }
 
   handleClick(){
-    axios.get('/text', {
+    axios.get('/contains', {
       params: {
-        url: this.state.url,
+        endpoint: this.state.enpoint,
+        tag: this.state.tag,
         text: this.state.text,
       }
     }).then((response) => {
@@ -37,17 +39,24 @@ class TextForm extends React.Component{
     <div className='section-container border-black'>
         <div className='display-flex line'>
           <div className='form-description'>
-            Paste Desired Website URL:
+            Paste Desired Website enpoint:
           </div>
-          <input type='text' name='url' value={this.state.url} onChange={this.handleChange}
+          <input type='text' name='enpoint' value={this.state.enpoint} onChange={this.handleChange}
           placeholder='https://cobalt.io/'/>
+        </div>
+        <div className='display-flex line'>
+          <div className='form-description'>
+            Desired Tag to be Searched:
+          </div>
+          <input type='text' name='tag' value={this.state.tag} onChange={this.handleChange}
+          placeholder='1'/>
         </div>
         <div className='display-flex line'>
           <div className='form-description'>
             Desired Text to be Searched:
           </div>
           <input type='text' name='text' value={this.state.text} 
-          placeholder='Resources' 
+          placeholder='Pen Testing as a Service' 
           onChange={this.handleChange}/>
         </div> 
         <div className='center'>

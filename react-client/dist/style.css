@@ -2,6 +2,7 @@ html {
   font-family: 'Rubik', sans-serif;
   background-color: #f9fbfc;
   color: #423B3D;
+  font-size: 0.9em;
 }
 
 input {
@@ -70,7 +71,7 @@ input {
 }
 
 .submit-button {
-  background: #4abfeb;
+  background: lightgrey;
   color: white;
   border: none;
   border-radius: 5px;
@@ -79,8 +80,8 @@ input {
 }
 
 .submit-button:hover {
-  border: 1px solid #4abfeb;
-  color: #4abfeb;
+  border: 1px solid lightgrey;
+  color: lightgrey;
   background: white;
 }
 

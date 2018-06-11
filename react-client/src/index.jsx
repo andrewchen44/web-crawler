@@ -27,7 +27,7 @@ const App = (props) => {
         <div className='section-container shadow-border'>
           <div className='text-align-center'>
             <div className='header blue'>Text Checker</div>
-            <div className='footer'>(Determines whether or not a website contains the searched text)</div>
+            <div className='footer'>(Determines whether or not a certain html tag on a website contains the searched text)</div>
           </div>
           <TextFormContainer />
           <TextResultsContainer />

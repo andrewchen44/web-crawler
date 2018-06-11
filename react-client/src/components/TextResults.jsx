@@ -8,7 +8,7 @@ const TextResults = props => {
   } 
   
   return <div className='section-container border-black'>
-    <div>Does website contain searched text: {exists}</div>
+    <div>Does website contain a tag with searched text: {exists}</div>
     </div>;
 };
 
